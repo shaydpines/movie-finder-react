@@ -1,12 +1,15 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
 
-function MovieCard({movie}) {
+function MovieCard({movie, index}) {
     const [noImage, setNoImage] = useState(false);
 
     return (
         <Link className="off-white" to={`/movie/${movie.imdbID}`}>
-            <div className="movie click">
+            <div
+                className="movie click fade-in"
+                style={{ animationDelay: `${index * 30}ms` }} // staggered delay
+            >
                 <figure className="movie-poster__wrapper">
                     {!noImage ? (
                         <img
