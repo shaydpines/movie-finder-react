@@ -7,7 +7,6 @@ export default function Search({
                                    isModalOpen,
                                    toggleModal,
                                    loading,
-                                   setLoading,
                                    initialSearch,
                                    setInitialSearch,
                                    search,
@@ -27,7 +26,7 @@ export default function Search({
 
     return (
         <>
-            <Main isModalOpen={isModalOpen} toggleModal={toggleModal} loading={loading} setLoading={setLoading}
+            <Main isModalOpen={isModalOpen} toggleModal={toggleModal} loading={loading}
                   initialSearch={initialSearch} search={search} updateSearch={updateSearch}
                   onSearchChange={onSearchChange} filterFilms={filterFilms} moviesShown={moviesShown}/>
         </>

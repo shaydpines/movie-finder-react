@@ -8,9 +8,11 @@ function MovieCard({movie, index}) {
         <Link className="off-white" to={`/movie/${movie.imdbID}`}>
             <div
                 className="movie click fade-in"
-                style={{ animationDelay: `${index * 30}ms` }} // staggered delay
+                style={{ animationDelay: `${index * 200}ms` }} // staggered delay
             >
-                <figure className="movie-poster__wrapper">
+                <figure className="movie-poster__wrapper"
+                        style={{ animationDelay: `${index * 200}ms` }}
+                >
                     {!noImage ? (
                         <img
                             src={movie.Poster}

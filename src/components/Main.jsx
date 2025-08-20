@@ -6,7 +6,6 @@ export default function Main({
                                  isModalOpen,
                                  toggleModal,
                                  loading,
-                                 setLoading,
                                  initialSearch,
                                  search,
                                  updateSearch,
@@ -45,10 +44,8 @@ useEffect(() => {
             <section id="movies">
                 <div className="container">
                     <div className="row">
-                        <div className="movie__details"></div>
-                        <div className="movie__list"><MovieList search={search} moviesShown={moviesShown}
+                        <MovieList search={search} moviesShown={moviesShown}
                                                                 loading={loading}/>
-                        </div>
                     </div>
                 </div>
             </section>

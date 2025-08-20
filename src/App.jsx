@@ -39,9 +39,12 @@ function App() {
         if (searchInput) {
             const url = (`https://www.omdbapi.com/?apikey=3c139917&s=${searchInput}`);
             setSearch(url);
+            setLoading(true);
             const {data} = await axios.get(url);
             if (data.Search) {
-                setMoviesShown(data.Search.filter((a) => a.Type === "movie").slice(0, 6));
+                setMoviesShown(data.Search.filter((a) => a.Type === "movie")
+                    .filter((movie, index, self) => index === self.findIndex(m => m.imdbID === movie.imdbID))
+                    .slice(0, 6));
             } else {
                 setMoviesShown([]);
             }
@@ -62,11 +65,13 @@ function App() {
     function updateSearch(value) {
         console.log(value);
         renderMovies(value, undefined);
+        setLoading(false);
     }
 
     function filterFilms(event) {
         console.log(event.target.value);
         renderMovies(undefined, event.target.value);
+        setLoading(false);
     }
 
     return (
@@ -81,9 +86,9 @@ function App() {
                     <Route path="/search" element={<Search isModalOpen={isModalOpen} toggleModal={toggleModal}
                                                            setInitialSearch={setInitialSearch}
                                                            initialSearch={initialSearch} loading={loading}
-                                                           setLoading={setLoading} updateSearch={updateSearch}
-                                                           search={search} onSearchChange={onSearchChange}
-                                                           filterFilms={filterFilms} moviesShown={moviesShown}/>}
+                                                           updateSearch={updateSearch} search={search}
+                                                           onSearchChange={onSearchChange} filterFilms={filterFilms}
+                                                           moviesShown={moviesShown}/>}
                     />
                     <Route path="/movie/:id" element={<MovieDetails/>}/>
                 </Routes>
