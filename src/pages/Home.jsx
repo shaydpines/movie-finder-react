@@ -1,6 +1,5 @@
 import React, {useEffect} from "react";
 import {useLocation} from "react-router-dom";
-import Main from "../components/Main";
 import Start from "../components/Start";
 
 export default function Home({isModalOpen, toggleModal, setInitialSearch, initialSearch}) {

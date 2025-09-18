@@ -495,6 +495,7 @@ Movie List
 .movie__list {
     width: 100%;
     max-width: 720px;
+    min-height: 867px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -556,14 +557,14 @@ Movie List
 .movie-poster__wrapper::after {
     content: "";
     position: absolute;
-    inset: 0;                    /* cover entire box */
+    inset: 0;
     background: linear-gradient(
             var(--a),
             transparent calc(var(--p) - 30%),
             white var(--p),
             transparent calc(var(--p) + 30%)
     );
-    pointer-events: none;        /* don’t block clicks */
+    pointer-events: none;
     transition: --p 2s;
     --p: 0%;
     animation: sweep 0.6s forwards;
@@ -636,6 +637,7 @@ Media
 @media (max-width: 1280px) {
     .movie__list {
         max-width: 600px;
+        min-height: 760px;
     }
 
     .movie {
